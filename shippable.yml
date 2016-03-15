@@ -27,7 +27,7 @@ build:
   post_ci:
    # - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_node_bb:28feb
     - docker push 480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala
-
+              
 integrations:
   hub:
     - integrationName: "ship-ecr"
