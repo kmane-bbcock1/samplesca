@@ -9,9 +9,26 @@ jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-    
+
 build:
+  pre_ci:
+    - docker build -t=gcr.io/varsha-project/shiphitchcock1_scala_preci_bb .
+
+  pre_ci_boot:
+    image_name: gcr.io/varsha-project/shiphitchcock1_scala_preci_bb
+    image_tag: latest
+    pull: false
+    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - java -version
     - echo $SHIPPABLE_SCALA_VERSION
+
+  post_ci:
+    #- docker build -t=gcr.io/varsha-project/shiphitchcock1_scala_preci_bb
+    - docker push gcr.io/varsha-project/shiphitchcock1_scala_preci_bb
+    
+integrations:
+  hub:
+    - integrationName: ship-gcr
+      type: gcr
