@@ -11,8 +11,8 @@ jdk:
   - oraclejdk8
       
 build:
-  pre_ci:
-    - docker build -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala .
+ # pre_ci:
+  #  - docker build -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala .
 
   pre_ci_boot:
     image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala
@@ -25,6 +25,7 @@ build:
     - echo $SHIPPABLE_SCALA_VERSION
 
   post_ci:
+    - docker build -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala .
    # - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_node_bb:28feb
     - docker push 480971114143.dkr.ecr.us-east-1.amazonaws.com/shiphitchcock1scala
               
