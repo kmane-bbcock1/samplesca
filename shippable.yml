@@ -9,9 +9,6 @@ jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-    
-build:
-
   
 build:
   pre_ci:
