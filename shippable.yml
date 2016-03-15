@@ -12,6 +12,26 @@ jdk:
     
 build:
 
+  
+build:
+  pre_ci:
+    - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_sca_bb .
+
+  pre_ci_boot:
+    image_name: quay.io/shippablequay/shiphitchcock1_sample_sca_bb
+    image_tag: latest
+    pull: false
+    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+
   ci:
     - java -version
-    - echo $SHIPPABLE_SCALA_VERSION
+    - echo $SHIPPABLE_SCALA_VERSION  
+
+  post_ci:
+   # - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_sca_bb
+    - docker push quay.io/shippablequay/shiphitchcock1_sample_sca_bb
+
+integrations:
+  hub:
+    - integrationName: ship-quay
+      type: quay.io
