@@ -15,7 +15,7 @@ services:
     - redis
     - memcache
     - rabbitmq
-    
+      
 build:
   pre_ci_boot:
     image_name: drydock/u12scapls
