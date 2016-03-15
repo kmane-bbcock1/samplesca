@@ -5,6 +5,11 @@ scala:
     - 2.9.3
     - 2.10.5
     
+jdk:
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
+    
 build:
   pre_ci:
     - docker build -t=shippabledocker/shiphitchcock1_sample_sca_unofficial .
